@@ -7,11 +7,9 @@
     <script src="{{ asset('js/script.js') }}" defer></script>
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <style>
-        /* Small fix to make alerts look good */
         .alert { padding: 10px; margin-bottom: 15px; border-radius: 5px; color: white; }
         .alert-success { background-color: #28a745; }
         .alert-danger { background-color: #dc3545; }
-        /* Fix for radio buttons looking like the buttons in your design */
         .radio-group label { display: inline-block; margin-right: 10px; cursor: pointer; }
         .radio-group input[type="radio"] { margin-right: 5px; }
     </style>
@@ -69,11 +67,11 @@
                 </div>
 
                 <div class="form-row">
-                    <div class="form-group">
+                    <div class="form-group" id="date-group">
                         <label>Date</label>
                         <input type="date" name="date" required value="{{ date('Y-m-d') }}">
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" id="time-group">
                         <label>Start Time</label>
                         <select name="start_time" required>
                             <option value="08:00:00">08:00 AM</option>
@@ -87,7 +85,7 @@
                     </div>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group" id="duration-group">
                     <label>Duration</label>
                     <div class="radio-group">
                         <label><input type="radio" name="duration" value="1" checked> 1 Hour</label>
@@ -144,5 +142,10 @@
                 </div>
         </div>
     </div>
+   <script>
+    @if(session('success'))
+        alert("{{ session('success') }}");
+    @endif
+</script>
 </body>
 </html>

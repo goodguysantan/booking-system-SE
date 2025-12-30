@@ -1,5 +1,5 @@
 // Duration button toggle
-        const durationButtons = document.querySelectorAll('.form-group:nth-of-type(3) .btn-option');
+        const durationButtons = document.querySelectorAll('#duration-group .btn-option');
         durationButtons.forEach(btn => {
             btn.addEventListener('click', function() {
                 durationButtons.forEach(b => b.classList.remove('active'));
@@ -8,7 +8,7 @@
         });
 
         // Court button toggle
-        const courtButtons = document.querySelectorAll('.form-group:nth-of-type(4) .btn-option');
+        const courtButtons = document.querySelectorAll('#court-group .btn-option');
         courtButtons.forEach(btn => {
             btn.addEventListener('click', function() {
                 courtButtons.forEach(b => b.classList.remove('active'));
@@ -22,13 +22,8 @@
             const facility = document.querySelectorAll('select')[0].value;
             const date = document.querySelector('input[type="date"]').value;
             const time = document.querySelectorAll('select')[1].value;
-            const durationBtn = document.querySelector('.form-group:nth-of-type(3) .btn-option.active');
-            const courtBtn = document.querySelector('.form-group:nth-of-type(4) .btn-option.active');
-            
-            if (!durationBtn || !courtBtn) {
-                alert('Please select duration and court');
-                return;
-            }
+            const durationBtn = document.querySelector('#duration-group .btn-option.active');
+            const courtBtn = document.querySelector('#court-group .btn-option.active');
             
             const duration = durationBtn.textContent.trim();
             const court = courtBtn.textContent.trim();
@@ -67,23 +62,6 @@
             // Show success message (optional)
             alert('Booking added successfully!');
         });
-
-        // Delete Booking functionality
-        document.querySelector('.btn-delete').addEventListener('click', function() {
-            const checkboxes = document.querySelectorAll('tbody input[type="checkbox"]:checked');
-            if (checkboxes.length === 0) {
-                alert('Please select at least one booking to delete');
-                return;
-            }
-            
-            if (confirm(`Are you sure you want to delete ${checkboxes.length} booking(s)?`)) {
-                checkboxes.forEach(checkbox => {
-                    checkbox.closest('tr').remove();
-                });
-                alert('Booking(s) deleted successfully!');
-            }
-        });
-
         // Select all checkbox functionality
         document.querySelector('thead input[type="checkbox"]').addEventListener('change', function() {
             const checkboxes = document.querySelectorAll('tbody input[type="checkbox"]');

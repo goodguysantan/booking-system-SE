@@ -41,7 +41,7 @@ class BookingController extends Controller
             'duration' => $request->duration
         ]);
 
-        return redirect()->route('dashboard')->with('success', 'Booking created successfully.');
+        return back()->with('success', 'Booking created successfully.');
     }
 
     public function destroy(Bookings $booking){
